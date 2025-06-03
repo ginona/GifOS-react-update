@@ -1,0 +1,86 @@
+:root {
+  // Light theme
+  --background-color: #ffffff;
+  --text-color: #110038;
+  --primary-color: #ff6161;
+  --border-color: #e6e6e6;
+  --input-background: #ffffff;
+  --section-background: #f7f7f7;
+  --hover-background: #f0f0f0;
+}
+
+// Dark theme
+.dark-mode {
+  --background-color: #110038;
+  --text-color: #ffffff;
+  --primary-color: #ff6161;
+  --border-color: #2e32fb;
+  --input-background: #110038;
+  --section-background: #2e32fb;
+  --hover-background: #3a3dff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Utility classes
+.noneDisplayed {
+  display: none !important;
+}
+
+.hideD {
+  display: none;
+}
+
+.hideL {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .hideD {
+    display: block;
+  }
+
+  .hideL {
+    display: none;
+  }
+} 

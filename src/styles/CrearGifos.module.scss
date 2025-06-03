@@ -1,0 +1,346 @@
+.crearGifos {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+  }
+}
+
+.error {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--border-color);
+    z-index: 1;
+  }
+}
+
+.step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  flex: 1;
+
+  .stepNumber {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  p {
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  &.active {
+    .stepNumber {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+
+    p {
+      opacity: 1;
+    }
+  }
+}
+
+.stepContent {
+  background-color: var(--section-background);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cameraOptions {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.cameraButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: none;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 2rem;
+    color: var(--text-color);
+  }
+
+  span {
+    color: var(--text-color);
+  }
+
+  &:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+  }
+}
+
+.cameraView {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.videoPreview {
+  width: 100%;
+  border-radius: 8px;
+  background-color: black;
+}
+
+.recordingControls {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+.recordButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 27px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  i {
+    font-size: 1.2rem;
+  }
+}
+
+.previewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.previewControls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cancelButton,
+.uploadButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 27px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 1.2rem;
+  }
+}
+
+.cancelButton {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+
+  &:hover {
+    background-color: rgba(var(--text-color-rgb), 0.1);
+  }
+}
+
+.uploadButton {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.successContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.gifPreview {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    border-radius: 8px;
+  }
+}
+
+.successControls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.downloadButton,
+.newGifButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 27px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 1.2rem;
+  }
+}
+
+.downloadButton {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.newGifButton {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+
+  &:hover {
+    background-color: rgba(var(--text-color-rgb), 0.1);
+  }
+}
+
+.uploadProgress {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-color);
+  padding: 1rem 2rem;
+  border-radius: 27px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  p {
+    color: var(--text-color);
+    margin: 0.5rem 0 0;
+    text-align: center;
+  }
+}
+
+.progressBar {
+  width: 200px;
+  height: 4px;
+  background-color: var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .crearGifos {
+    padding: 1rem;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .stepNumber {
+      margin: 0;
+    }
+  }
+
+  .cameraOptions {
+    flex-direction: column;
+  }
+
+  .previewControls,
+  .successControls {
+    flex-direction: column;
+  }
+
+  .uploadProgress {
+    width: 90%;
+    max-width: 300px;
+  }
+} 

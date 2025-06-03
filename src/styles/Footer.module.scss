@@ -1,0 +1,50 @@
+.footer {
+  background-color: var(--background-color);
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+
+.redes {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.socialMediaFooter {
+  margin-bottom: 2rem;
+
+  h4 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+}
+
+.socialMedia {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.copyright {
+  p {
+    color: var(--text-color);
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .socialMedia {
+    gap: 1rem;
+  }
+} 
