@@ -28,6 +28,9 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'build',
       sourcemap: true
+    },
+    define: {
+      'import.meta.env.VITE_GIPHY_API_KEY': JSON.stringify(env.VITE_GIPHY_API_KEY)
     }
   }
 }) 

@@ -2,12 +2,16 @@
   "rewrites": [
     {
       "source": "/api/giphy/:path*",
-      "destination": "https://api.giphy.com/v1/:path*?api_key=:api_key",
-      "has": [
+      "destination": "https://api.giphy.com/v1/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/giphy/(.*)",
+      "headers": [
         {
-          "type": "query",
-          "key": "api_key",
-          "value": "(?<api_key>.*)"
+          "key": "x-api-key",
+          "value": "VITE_GIPHY_API_KEY"
         }
       ]
     }
