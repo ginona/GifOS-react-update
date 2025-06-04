@@ -17,7 +17,7 @@ const TrendingGifs = ({ onGifClick }) => {
   const fetchTrendingGifs = async () => {
     try {
       const response = await fetch(
-        `https://api.giphy.com/v1/gifs/trending?api_key=${import.meta.env.VITE_GIPHY_API_KEY}&limit=10`
+        `/api/giphy/gifs/trending?limit=10`
       );
       const data = await response.json();
       setTrendingGifs(data.data);
@@ -29,7 +29,7 @@ const TrendingGifs = ({ onGifClick }) => {
   const fetchTrendingTerms = async () => {
     try {
       const response = await fetch(
-        `https://api.giphy.com/v1/trending/searches?api_key=${import.meta.env.VITE_GIPHY_API_KEY}`
+        `/api/giphy/trending/searches`
       );
       const data = await response.json();
       setTrendingTerms(data.data);

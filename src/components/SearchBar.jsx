@@ -25,7 +25,7 @@ const SearchBar = ({ onSearch }) => {
     if (value.length > 2) {
       try {
         const response = await fetch(
-          `https://api.giphy.com/v1/gifs/search/tags?api_key=${import.meta.env.VITE_GIPHY_API_KEY}&q=${value}&limit=5`
+          `/api/giphy/gifs/search/tags?q=${value}&limit=5`
         );
         const data = await response.json();
         setSuggestions(data.data);
