@@ -1,19 +1,26 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/api/giphy/:path*",
-      "destination": "/api/giphy?path=:path*"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
   ],
-  "headers": [
+  "routes": [
     {
-      "source": "/api/giphy/(.*)",
-      "headers": [
-        {
-          "key": "x-api-key",
-          "value": "VITE_GIPHY_API_KEY"
-        }
-      ]
+      "src": "/api/giphy/(.*)",
+      "dest": "/api/giphy?path=$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 } 
