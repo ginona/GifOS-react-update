@@ -10,13 +10,22 @@
     },
     {
       "src": "api/**/*.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [".env*"]
+      }
     }
   ],
   "routes": [
     {
       "src": "/api/giphy/(.*)",
-      "dest": "/api/giphy?path=$1"
+      "dest": "/api/giphy?path=$1",
+      "methods": ["GET", "POST", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
+      }
     },
     {
       "src": "/(.*)",
