@@ -27,7 +27,18 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: 'build',
-      sourcemap: true
+      sourcemap: true,
+      rollupOptions: {
+        input: {
+          main: './index.html'
+        },
+        output: {
+          manualChunks: undefined,
+          entryFileNames: 'assets/[name].[hash].js',
+          chunkFileNames: 'assets/[name].[hash].js',
+          assetFileNames: 'assets/[name].[hash].[ext]'
+        }
+      }
     },
     define: {
       'import.meta.env.VITE_GIPHY_API_KEY': JSON.stringify(env.VITE_GIPHY_API_KEY)
