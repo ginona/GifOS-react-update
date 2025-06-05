@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/giphy/:path*",
+      "destination": "/api/giphy?path=:path*"
+    }
+  ]
+} 
