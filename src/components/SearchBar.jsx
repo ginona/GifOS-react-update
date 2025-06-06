@@ -68,7 +68,7 @@ const SearchBar = ({ onSearch }) => {
               type="text"
               value={query}
               onChange={handleInputChange}
-              placeholder="Busca GIFOS y más"
+              placeholder="Search GIFOS and more"
               className={styles.searchInput}
             />
             <button type="submit" className={styles.searchBtn}>

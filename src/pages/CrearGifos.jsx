@@ -149,26 +149,26 @@ const CrearGifos = () => {
 
   return (
     <div className={styles.crearGifos}>
-      <h1>Crear GIFOS</h1>
+      <h1>Create GIFOS</h1>
 
       {error && <div className={styles.error}>{error}</div>}
 
       <div className={styles.steps}>
         <div className={`${styles.step} ${step >= 1 ? styles.active : ''}`}>
           <div className={styles.stepNumber}>1</div>
-          <p>Elegí una opción</p>
+          <p>Choose an option</p>
         </div>
         <div className={`${styles.step} ${step >= 2 ? styles.active : ''}`}>
           <div className={styles.stepNumber}>2</div>
-          <p>Grabá tu GIFO</p>
+          <p>Record your GIFO</p>
         </div>
         <div className={`${styles.step} ${step >= 3 ? styles.active : ''}`}>
           <div className={styles.stepNumber}>3</div>
-          <p>Revisá tu GIFO</p>
+          <p>Review your GIFO</p>
         </div>
         <div className={`${styles.step} ${step >= 4 ? styles.active : ''}`}>
           <div className={styles.stepNumber}>4</div>
-          <p>¡Compartí tu GIFO!</p>
+          <p>Share your GIFO!</p>
         </div>
       </div>
 
@@ -177,7 +177,7 @@ const CrearGifos = () => {
           <div className={styles.cameraOptions}>
             <button onClick={startCamera} className={styles.cameraButton}>
               <i className="fa fa-camera"></i>
-              <span>Elegir cámara</span>
+              <span>Choose camera</span>
             </button>
           </div>
         </div>
@@ -200,7 +200,7 @@ const CrearGifos = () => {
                 className={styles.recordButton}
               >
                 <i className={`fa fa-${isRecording ? 'stop' : 'circle'}`}></i>
-                {isRecording ? 'Grabando...' : 'Comenzar a grabar'}
+                {isRecording ? 'Recording...' : 'Start recording'}
               </button>
             </div>
           </div>
@@ -218,11 +218,11 @@ const CrearGifos = () => {
             <div className={styles.previewControls}>
               <button onClick={resetProcess} className={styles.cancelButton}>
                 <i className="fa fa-times"></i>
-                Cancelar
+                Cancel
               </button>
               <button onClick={uploadGif} className={styles.uploadButton}>
                 <i className="fa fa-upload"></i>
-                Subir GIFO
+                Upload GIFO
               </button>
             </div>
           </div>

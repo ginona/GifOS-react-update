@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <section className={styles.redes}>
         <div className={styles.socialMediaFooter}>
-          <h4>Compartir en:</h4>
+          <h4>Share on:</h4>
           <div className={styles.socialMedia}>
             <a
               href="https://www.facebook.com/Acamica.org/"

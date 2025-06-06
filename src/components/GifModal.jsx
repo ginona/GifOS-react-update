@@ -58,7 +58,7 @@ const GifModal = ({ gif, onClose }) => {
           />
           <div className={styles.modalInfo}>
             <div className={styles.userInfo}>
-              <p className={styles.username}>{gif.username || 'Anónimo'}</p>
+              <p className={styles.username}>{gif.username || 'Anonymous'}</p>
               <h3 className={styles.title}>{gif.title}</h3>
             </div>
             <div className={styles.actions}>

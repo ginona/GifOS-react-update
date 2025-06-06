@@ -32,11 +32,11 @@ const MisGifos = () => {
 
   return (
     <div className={styles.misGifos}>
-      <h1>Mis GIFOS</h1>
+      <h1>My GIFOS</h1>
       {myGifs.length === 0 ? (
         <div className={styles.emptyState}>
-          <img src="/img/icon-mis-gifos-sin-contenido.svg" alt="No hay GIFs creados" />
-          <p>¡Anímate a crear tu primer GIFO!</p>
+          <img src="/img/icon-mis-gifos-sin-contenido.svg" alt="No GIFs created" />
+          <p>Create your first GIFO!</p>
         </div>
       ) : (
         <div className={styles.gifsGrid}>
@@ -63,7 +63,7 @@ const MisGifos = () => {
                   </button>
                 </div>
                 <div className={styles.gifInfo}>
-                  <p className={styles.gifUser}>{gif.username || 'Anónimo'}</p>
+                  <p className={styles.gifUser}>{gif.username || 'Anonymous'}</p>
                   <p className={styles.gifTitle}>{gif.title}</p>
                 </div>
               </div>

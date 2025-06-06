@@ -32,11 +32,11 @@ const Favoritos = () => {
 
   return (
     <div className={styles.favoritos}>
-      <h1>Favoritos</h1>
+      <h1>Favorites</h1>
       {favorites.length === 0 ? (
         <div className={styles.emptyState}>
-          <img src="/img/icon-fav-sin-contenido.svg" alt="No hay favoritos" />
-          <p>¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!</p>
+          <img src="/img/icon-fav-sin-contenido.svg" alt="No favorites" />
+          <p>Save your first GIFO in Favorites to see it here!</p>
         </div>
       ) : (
         <div className={styles.favoritesGrid}>
@@ -63,7 +63,7 @@ const Favoritos = () => {
                   </button>
                 </div>
                 <div className={styles.gifInfo}>
-                  <p className={styles.gifUser}>{gif.username || 'Anónimo'}</p>
+                  <p className={styles.gifUser}>{gif.username || 'Anonymous'}</p>
                   <p className={styles.gifTitle}>{gif.title}</p>
                 </div>
               </div>

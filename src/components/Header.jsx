@@ -40,7 +40,7 @@ const Header = () => {
                 className={location.pathname === '/' ? styles.active : ''}
                 onClick={closeMenu}
               >
-                Inicio
+                Home
               </Link>
             </li>
             <li>
@@ -49,7 +49,7 @@ const Header = () => {
                 className={location.pathname === '/favoritos' ? styles.active : ''}
                 onClick={closeMenu}
               >
-                Favoritos
+                Favorites
               </Link>
             </li>
             <li>
@@ -58,7 +58,7 @@ const Header = () => {
                 className={location.pathname === '/mis-gifos' ? styles.active : ''}
                 onClick={closeMenu}
               >
-                Mis Gifos
+                My GIFOS
               </Link>
             </li>
             <li>
@@ -67,7 +67,7 @@ const Header = () => {
                 className={location.pathname === '/crear-gifos' ? styles.active : ''}
                 onClick={closeMenu}
               >
-                Crear Gifos
+                Create GIFOS
               </Link>
             </li>
           </ul>
@@ -78,13 +78,13 @@ const Header = () => {
             className={`${styles.changeBtn} ${isDarkMode ? styles.hideL : styles.hideD}`}
             onClick={toggleDarkMode}
           >
-            Modo Diurno
+            Day Mode
           </button>
           <button 
             className={`${styles.changeBtn} ${isDarkMode ? styles.hideD : styles.hideL}`}
             onClick={toggleDarkMode}
           >
-            Modo Nocturno
+            Night Mode
           </button>
           <button className={styles.menuToggle} onClick={toggleMenu}>
             <i className={`fa fa-${isMenuOpen ? 'times' : 'bars'}`}></i>
