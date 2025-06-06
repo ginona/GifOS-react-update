@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDarkMode } from '../context/DarkModeContext';
 import { useFavorites } from '../context/FavoritesContext';
 import GifCard from './GifCard';
@@ -7,7 +7,7 @@ import styles from '../styles/Favoritos.module.scss';
 
 const Favoritos = () => {
   const { isDarkMode } = useDarkMode();
-  const { favorites } = useFavorites();
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
   const [selectedGif, setSelectedGif] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,6 +19,16 @@ const Favoritos = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedGif(null);
+  };
+
+  const handleFavoriteClick = (e, gif) => {
+    e.stopPropagation();
+    toggleFavorite(gif);
+  };
+
+  const handleDownload = (e, gif) => {
+    e.stopPropagation();
+    window.open(gif.images.original.url, '_blank');
   };
 
   return (
@@ -35,7 +45,9 @@ const Favoritos = () => {
             <GifCard
               key={gif.id}
               gif={gif}
-              onClick={() => handleGifClick(gif)}
+              onGifClick={handleGifClick}
+              onFavoriteClick={handleFavoriteClick}
+              onDownload={handleDownload}
             />
           ))}
         </div>

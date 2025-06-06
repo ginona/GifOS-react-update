@@ -22,18 +22,19 @@ const GifModal = ({ gif, onClose }) => {
     }
   };
 
-  const handleDownload = async () => {
+  const handleDownload = async (e) => {
+    e.stopPropagation();
     try {
       const response = await fetch(gif.images.original.url);
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${gif.title || 'gif'}.gif`;
-      document.body.appendChild(a);
-      a.click();
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${gif.title || 'gif'}.gif`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
     } catch (error) {
       console.error('Error downloading GIF:', error);
     }
@@ -46,30 +47,29 @@ const GifModal = ({ gif, onClose }) => {
 
   return (
     <div className={styles.modalOverlay} onClick={handleOverlayClick}>
-      <div className={styles.modal}>
+      <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>
           <i className="fa fa-times"></i>
         </button>
-        <div className={styles.modalContent}>
-          <img
-            src={gif.images.original.url}
-            alt={gif.title}
-            className={styles.modalImage}
-          />
-          <div className={styles.modalInfo}>
+        <div className={styles.gifContainer}>
+          <img src={gif.images.original.url} alt={gif.title} />
+          <div className={styles.gifInfo}>
             <div className={styles.userInfo}>
               <p className={styles.username}>{gif.username || 'Anonymous'}</p>
-              <h3 className={styles.title}>{gif.title}</h3>
+              <p className={styles.title}>{gif.title}</p>
             </div>
             <div className={styles.actions}>
-              <button className={styles.actionButton} onClick={handleDownload}>
-                <i className="fa fa-download"></i>
-              </button>
               <button 
-                className={`${styles.actionButton} ${isFavorite(gif.id) ? styles.favorite : ''}`}
+                className={`${styles.actionBtn} ${isFavorite(gif.id) ? styles.favorite : ''}`}
                 onClick={handleFavoriteClick}
               >
                 <i className="fa fa-heart"></i>
+              </button>
+              <button 
+                className={styles.actionBtn}
+                onClick={handleDownload}
+              >
+                <i className="fa fa-download"></i>
               </button>
             </div>
           </div>

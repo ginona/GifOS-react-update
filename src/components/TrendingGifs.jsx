@@ -87,6 +87,24 @@ export const Carousel = ({ onGifClick }) => {
     toggleFavorite(gif);
   };
 
+  const handleDownload = async (e, gif) => {
+    e.stopPropagation();
+    try {
+      const response = await fetch(gif.images.original.url);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${gif.title || 'gif'}.gif`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading GIF:', error);
+    }
+  };
+
   return (
     <div className={styles.trendingGifs}>
       <h2>Trending GIFOS</h2>
@@ -122,7 +140,10 @@ export const Carousel = ({ onGifClick }) => {
                     >
                       <i className="fa fa-heart"></i>
                     </button>
-                    <button className={styles.actionBtn}>
+                    <button 
+                      className={styles.actionBtn}
+                      onClick={(e) => handleDownload(e, gif)}
+                    >
                       <i className="fa fa-download"></i>
                     </button>
                     <button className={styles.actionBtn}>

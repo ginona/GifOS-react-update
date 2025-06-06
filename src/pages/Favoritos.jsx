@@ -30,6 +30,29 @@ const Favoritos = () => {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
+  const handleDownload = (e, gif) => {
+    e.stopPropagation();
+    const url = gif.images.original.url;
+    const filename = `${gif.title || 'gif'}.gif`;
+    
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const blobUrl = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
+      })
+      .catch(error => {
+        console.error('Error downloading GIF:', error);
+        alert('Error downloading GIF. Please try again.');
+      });
+  };
+
   return (
     <div className={styles.favoritos}>
       <h1>Favorites</h1>
@@ -55,10 +78,16 @@ const Favoritos = () => {
                   >
                     <i className="fa fa-trash"></i>
                   </button>
-                  <button className={styles.actionBtn}>
+                  <button 
+                    className={styles.actionBtn}
+                    onClick={(e) => handleDownload(e, gif)}
+                  >
                     <i className="fa fa-download"></i>
                   </button>
-                  <button className={styles.actionBtn}>
+                  <button 
+                    className={styles.actionBtn}
+                    onClick={() => handleGifClick(gif)}
+                  >
                     <i className="fa fa-expand"></i>
                   </button>
                 </div>
