@@ -2,11 +2,13 @@
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  position: relative;
 }
 
 .searchBox {
   position: relative;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .inputContainer {
@@ -54,17 +56,25 @@
   right: 40px;
 }
 
+.error {
+  color: #ff4444;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
 .suggestions {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
+  margin-top: 15px;
   background-color: var(--background-color);
   border: 1px solid var(--border-color);
-  border-radius: 0 0 27px 27px;
-  margin-top: -1px;
+  border-radius: 27px;
   z-index: 1000;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
 }
 
 .suggestionItem {

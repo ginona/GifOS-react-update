@@ -5,6 +5,7 @@ const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [error, setError] = useState(null);
   const searchRef = useRef(null);
 
   useEffect(() => {
@@ -21,17 +22,29 @@ const SearchBar = ({ onSearch }) => {
   const handleInputChange = async (e) => {
     const value = e.target.value;
     setQuery(value);
+    setError(null);
 
     if (value.length > 2) {
       try {
         const response = await fetch(
-          `/api/giphy/gifs/search/tags?q=${value}&limit=5`
+          `/api/giphy/gifs/search/tags?q=${encodeURIComponent(value)}&limit=5`
         );
+        if (!response.ok) {
+          throw new Error('Failed to fetch suggestions');
+        }
         const data = await response.json();
-        setSuggestions(data.data);
-        setShowSuggestions(true);
+        if (data.data) {
+          setSuggestions(data.data);
+          setShowSuggestions(true);
+        } else {
+          setSuggestions([]);
+          setShowSuggestions(false);
+        }
       } catch (error) {
         console.error('Error fetching suggestions:', error);
+        setError('Failed to load suggestions');
+        setSuggestions([]);
+        setShowSuggestions(false);
       }
     } else {
       setSuggestions([]);
@@ -57,6 +70,7 @@ const SearchBar = ({ onSearch }) => {
     setQuery('');
     setSuggestions([]);
     setShowSuggestions(false);
+    setError(null);
   };
 
   return (
@@ -85,6 +99,7 @@ const SearchBar = ({ onSearch }) => {
             )}
           </div>
         </form>
+        {error && <div className={styles.error}>{error}</div>}
         {showSuggestions && suggestions.length > 0 && (
           <div className={styles.suggestions}>
             {suggestions.map((suggestion) => (

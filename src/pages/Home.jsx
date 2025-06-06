@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
-import TrendingGifs from '../components/TrendingGifs';
+import { TrendingTerms, Carousel } from '../components/TrendingGifs';
 import GifModal from '../components/GifModal';
 import styles from '../styles/Home.module.scss';
 
@@ -40,6 +40,7 @@ const Home = () => {
         </h1>
       </section>
 
+      {/* 1. Search Bar */}
       <section className={styles.search}>
         <div className={styles.imageSearch}>
           <img src="/img/ilustra_header.svg" alt="search illustration" />
@@ -47,6 +48,12 @@ const Home = () => {
         <SearchBar onSearch={handleSearch} />
       </section>
 
+      {/* 2. Trending Text */}
+      <section className={styles.trendingTerms}>
+        <TrendingTerms onSearch={handleSearch} />
+      </section>
+
+      {/* 3. Search Results */}
       <section className={styles.results}>
         {searchResults.length > 0 && (
           <div className={styles.containerResults}>
@@ -61,8 +68,9 @@ const Home = () => {
         )}
       </section>
 
-      <section className={styles.trending}>
-        <TrendingGifs onGifClick={handleGifClick} />
+      {/* 4. Trending Carousel */}
+      <section className={styles.trendingCarousel}>
+        <Carousel onGifClick={handleGifClick} />
       </section>
 
       {isModalOpen && selectedGif && (
