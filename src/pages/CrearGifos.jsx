@@ -36,11 +36,12 @@ const CrearGifos = () => {
       if (videoRef.current) {
         videoRef.current.srcObject = stream;
         streamRef.current = stream;
+        await videoRef.current.play();
       }
       
       setStep(2);
     } catch (err) {
-      setError('No se pudo acceder a la cámara. Por favor, asegúrate de dar los permisos necesarios.');
+      setError('Could not access the camera. Please make sure you have granted the necessary permissions.');
       console.error('Error accessing camera:', err);
     }
   };
