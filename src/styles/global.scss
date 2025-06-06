@@ -2,7 +2,8 @@
   // Light theme
   --background-color: #ffffff;
   --text-color: #110038;
-  --primary-color: #ff6161;
+  --primary-color: #572EE5;
+  --secondary-color: #50E3C2;
   --border-color: #e6e6e6;
   --input-background: #ffffff;
   --section-background: #f7f7f7;
@@ -13,7 +14,8 @@
 .dark-mode {
   --background-color: #110038;
   --text-color: #ffffff;
-  --primary-color: #ff6161;
+  --primary-color: #572EE5;
+  --secondary-color: #50E3C2;
   --border-color: #2e32fb;
   --input-background: #110038;
   --section-background: #2e32fb;
@@ -45,6 +47,7 @@ main {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 900;
+  font-family: 'Montserrat', sans-serif;
 }
 
 button {
